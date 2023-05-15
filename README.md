@@ -1,6 +1,6 @@
 # hcx-utils
 
-A static site base on [dumi](https://d.umijs.org).
+[hcx-utils](https://hcx-utils.balala.live).
 
 ## Development
 
