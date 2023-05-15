@@ -1,19 +1,12 @@
 # hcx-utils
 
-[hcx-utils](https://hcx-utils.balala.live).
+工具类集合 [hcx-utils](https://github.com/HaoChenxin/hcx-utils).
 
-## Development
+## 功能
 
-```bash
-# install dependencies
-$ pnpm install
-
-# start dev server
-$ pnpm start
-
-# build docs
-$ pnpm run build
-```
+- 缓存管理
+- 加密管理
+- 类型判断
 
 ## LICENSE
 

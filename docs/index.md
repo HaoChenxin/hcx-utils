@@ -7,5 +7,5 @@ hero:
     - text: 立即上手
       link: /api
     - text: GitHub
-      link: /
+      link: https://github.com/HaoChenxin/hcx-utils
 ---
