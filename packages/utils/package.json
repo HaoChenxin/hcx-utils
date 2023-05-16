@@ -39,6 +39,9 @@
   "dependencies": {
     "@babel/runtime": "^7.21.0",
     "crypto-js": "^4.1.1",
+    "hcx-utils": "^0.0.5",
+    "jr-qrcode": "^1.1.4",
+    "qrcode-decoder": "^0.3.3",
     "tslib": "^2.4.1"
   },
   "devDependencies": {

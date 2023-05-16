@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.pro.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "lib",
@@ -8,7 +8,7 @@
     "paths": {
       "@/*": ["src/*"],
       "hcx-utils": ["./packages/utils/src/index.ts"],
-      "hcx-utils/lib/*": ["./packages/utils/src/*"],
+      "hcx-utils/lib/*": ["./packages/utils/src/*"]
     }
   }
 }
