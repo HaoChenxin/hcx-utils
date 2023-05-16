@@ -71,7 +71,7 @@ devDependencies:
     specifier: ^13.0.3
     version: registry.npmmirror.com/lint-staged@13.2.2
   prettier:
-    specifier: ^2.7.1
+    specifier: ^2.8.8
     version: registry.npmmirror.com/prettier@2.8.8
   rimraf:
     specifier: ^3.0.2

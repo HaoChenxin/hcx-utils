@@ -6,5 +6,5 @@ module.exports = {
   mode: 'production',
   resolve: {
     extensions: ['.json', '.js'],
-  }
-};
+  },
+}

@@ -8,10 +8,10 @@ const Page: React.FC = () => {
   const [file, setFile] = useState<any>(null)
 
   const decoderFile = async () => {
-    if(file) {
+    if (file) {
       const reader = new FileReader()
       reader.readAsDataURL(file)
-      reader.onload = async (ev) => {
+      reader.onload = async ev => {
         const result: any = ev.target?.result || ''
         const res = await decoderQrcode(result)
         console.log(res)
@@ -20,10 +20,12 @@ const Page: React.FC = () => {
       alert('请选择文件')
     }
   }
-  return (<>
-    <input type="file" onChange={(e) => setFile(e.target.files?.[0])} />
-    前往控制台查看<button onClick={() => decoderFile()}>解码</button>
-  </>)
+  return (
+    <>
+      <input type="file" onChange={e => setFile(e.target.files?.[0])} />
+      前往控制台查看<button onClick={() => decoderFile()}>解码</button>
+    </>
+  )
 }
 
 export default Page

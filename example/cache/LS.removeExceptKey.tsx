@@ -6,7 +6,6 @@ import { LS } from 'hcx-utils'
 import React from 'react'
 
 const Page: React.FC = () => {
-
   return (
     <>
       请前往控制台查看

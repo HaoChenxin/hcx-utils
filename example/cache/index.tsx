@@ -7,16 +7,16 @@ import React, { useEffect } from 'react'
 
 const LS1 = createStorage(localStorage, {
   prefixKey: 'cache-ls-',
-  timeout: 3
+  timeout: 3,
 })
 const LS2 = createLocalStorage({
   prefixKey: 'cache-ls-',
-  timeout: 3
+  timeout: 3,
 })
 
 const SS1 = createSessionStorage({
   prefixKey: 'cache-ss-',
-  timeout: 3
+  timeout: 3,
 })
 
 const Page: React.FC = () => {
@@ -32,9 +32,11 @@ const Page: React.FC = () => {
       SS1.remove('demo2')
     }
   }, [])
-  return (<>
-    前往缓存查看<button onClick={() => setCache()}>设置缓存</button>
-  </>)
+  return (
+    <>
+      前往缓存查看<button onClick={() => setCache()}>设置缓存</button>
+    </>
+  )
 }
 
 export default Page

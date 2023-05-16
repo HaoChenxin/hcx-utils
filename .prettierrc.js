@@ -6,15 +6,15 @@ module.exports = {
   tabWidth: 2,
   useTabs: false,
   semi: false,
-  arrowParens: "avoid",
+  arrowParens: 'avoid',
   bracketSpacing: true,
-  endOfLine: "auto",
+  endOfLine: 'auto',
   overrides: [
     {
       files: '*.md',
       options: {
         proseWrap: 'preserve',
       },
-    }
-  ]
-};
+    },
+  ],
+}

@@ -28,7 +28,7 @@
       "prettier --write --no-error-on-unmatched-pattern"
     ],
     "*.{js,ts}": [
-      "prettier --config .prettierrc --write ."
+      "prettier --config .prettierrc.js --write ."
     ]
   },
   "devDependencies": {

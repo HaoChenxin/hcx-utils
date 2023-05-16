@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
-import { defineConfig } from 'dumi';
+import dayjs from 'dayjs'
+import { defineConfig } from 'dumi'
 
 export default defineConfig({
   themeConfig: {
@@ -15,6 +15,6 @@ export default defineConfig({
     hd: { rules: [] },
     rtl: true,
     name: 'hcx-utils',
-    footer: `Copyright © ${dayjs().format('YYYY')} | Powered by <a>chenxin.hao</a>`
-  }
-});
+    footer: `Copyright © ${dayjs().format('YYYY')} | Powered by <a>chenxin.hao</a>`,
+  },
+})

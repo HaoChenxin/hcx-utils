@@ -1,9 +1,9 @@
-import { createSessionStorage } from '../cache/index';
+import { createSessionStorage } from '../cache/index'
 
 /**
  * SessionStorage 默认方法，如需自定义配置请使用createSessionStorage
  */
 export default createSessionStorage({
   prefixKey: 'ss-',
-  timeout: 60 * 60 * 24 * 30
-});
+  timeout: 60 * 60 * 24 * 30,
+})

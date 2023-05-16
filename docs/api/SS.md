@@ -7,4 +7,4 @@ demo:
   cols: 2
 ---
 
-同LS
+同 LS

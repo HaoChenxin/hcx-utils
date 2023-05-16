@@ -1,16 +1,16 @@
-import { AesEncryption } from '../cipher';
-import { isNullOrUnDef } from '../is';
+import { AesEncryption } from '../cipher'
+import { isNullOrUnDef } from '../is'
 
-declare type Nullable<T> = T | null;
+declare type Nullable<T> = T | null
 export interface EncryptionParams {
-  key: string;
-  iv: string;
+  key: string
+  iv: string
 }
 export interface CreateStorageParams extends EncryptionParams {
-  prefixKey: string;
-  storage: Storage;
-  hasEncrypt: boolean;
-  timeout?: Nullable<any>;
+  prefixKey: string
+  storage: Storage
+  hasEncrypt: boolean
+  timeout?: Nullable<any>
 }
 
 export const createStorage = ({
@@ -21,14 +21,14 @@ export const createStorage = ({
   timeout = null,
   hasEncrypt = true,
 }) => {
-  if (hasEncrypt && [key.length, iv.length].some((item) => item !== 16)) {
-    throw new Error('When hasEncrypt is true, the key or iv must be 16 bits!');
+  if (hasEncrypt && [key.length, iv.length].some(item => item !== 16)) {
+    throw new Error('When hasEncrypt is true, the key or iv must be 16 bits!')
   }
 
-  const encryption = AesEncryption({ key, iv });
+  const encryption = AesEncryption({ key, iv })
 
   const getKey = (key: string) => {
-    return `${prefixKey}${key}`.toUpperCase();
+    return `${prefixKey}${key}`.toUpperCase()
   }
 
   /**
@@ -37,19 +37,19 @@ export const createStorage = ({
    * @memberof Cache
    */
   const getStorageAllKeys = (cache?: Storage): string[] => {
-    const arr: string[] = [];
+    const arr: string[] = []
     for (let i = 0; i < (cache?.length || storage.length); i++) {
-      let key: any = '';
-      if(cache) {
+      let key: any = ''
+      if (cache) {
         key = cache.key(i)
       } else {
         key = storage.key(i)
       }
       if (key) {
-        arr.push(key);
+        arr.push(key)
       }
     }
-    return arr;
+    return arr
   }
 
   /**
@@ -64,14 +64,10 @@ export const createStorage = ({
     const stringData = JSON.stringify({
       value,
       time: Date.now(),
-      expire: !isNullOrUnDef(expire)
-        ? new Date().getTime() + expire * 1000
-        : null,
-    });
-    const stringifyValue = hasEncrypt
-      ? encryption.encryptByAES(stringData)
-      : stringData;
-    storage.setItem(getKey(key), stringifyValue);
+      expire: !isNullOrUnDef(expire) ? new Date().getTime() + expire * 1000 : null,
+    })
+    const stringifyValue = hasEncrypt ? encryption.encryptByAES(stringData) : stringData
+    storage.setItem(getKey(key), stringifyValue)
   }
 
   /**
@@ -86,15 +82,11 @@ export const createStorage = ({
     const stringData = JSON.stringify({
       value,
       time: Date.now(),
-      expire: !isNullOrUnDef(expire)
-        ? new Date().getTime() + expire * 1000
-        : null,
-    });
-    const stringifyValue = hasEncrypt
-      ? encryption.encryptByAES(stringData)
-      : stringData;
-    localStorage.setItem(getKey(key), stringifyValue);
-    sessionStorage.setItem(getKey(key), stringifyValue);
+      expire: !isNullOrUnDef(expire) ? new Date().getTime() + expire * 1000 : null,
+    })
+    const stringifyValue = hasEncrypt ? encryption.encryptByAES(stringData) : stringData
+    localStorage.setItem(getKey(key), stringifyValue)
+    sessionStorage.setItem(getKey(key), stringifyValue)
   }
 
   /**
@@ -103,21 +95,19 @@ export const createStorage = ({
    * @memberof Cache
    */
   const get = (key: string, def: any = null): any => {
-    const val = storage.getItem(getKey(key));
-    if (!val) return def;
+    const val = storage.getItem(getKey(key))
+    if (!val) return def
 
     try {
-      const decVal = hasEncrypt
-        ? encryption.decryptByAES(val)
-        : val;
-      const data = JSON.parse(decVal);
-      const { value, expire } = data;
+      const decVal = hasEncrypt ? encryption.decryptByAES(val) : val
+      const data = JSON.parse(decVal)
+      const { value, expire } = data
       if (isNullOrUnDef(expire) || expire >= new Date().getTime()) {
-        return value;
+        return value
       }
-      remove(key);
+      remove(key)
     } catch (e) {
-      return def;
+      return def
     }
   }
 
@@ -129,10 +119,10 @@ export const createStorage = ({
    * @memberof Cache
    */
   const remove = (key: string, cache?: Storage) => {
-    if(cache) {
+    if (cache) {
       cache.removeItem(getKey(key))
     } else {
-      storage.removeItem(getKey(key));
+      storage.removeItem(getKey(key))
     }
   }
 
@@ -153,9 +143,9 @@ export const createStorage = ({
    * @memberof Cache
    */
   const clear = (): void => {
-    const allKeys = getStorageAllKeys();
+    const allKeys = getStorageAllKeys()
     allKeys.forEach(k => {
-      if(k.startsWith(prefixKey)) {
+      if (k.startsWith(prefixKey)) {
         remove(k)
       }
     })
@@ -168,7 +158,7 @@ export const createStorage = ({
    * @memberof Cache
    */
   const clearAll = (): void => {
-    storage.clear();
+    storage.clear()
   }
 
   /**
@@ -176,8 +166,8 @@ export const createStorage = ({
    * 删除所有缓存(session | local )
    */
   const cacheClearAll = (): void => {
-    sessionStorage.clear();
-    localStorage.clear();
+    sessionStorage.clear()
+    localStorage.clear()
   }
 
   /**
@@ -186,15 +176,15 @@ export const createStorage = ({
    * @memberof Cache
    */
   const cacheClear = (): void => {
-    const ssAllKeys = getStorageAllKeys(sessionStorage);
-    const llAllKeys = getStorageAllKeys(localStorage);
+    const ssAllKeys = getStorageAllKeys(sessionStorage)
+    const llAllKeys = getStorageAllKeys(localStorage)
     ssAllKeys.forEach(k => {
-      if(k.startsWith(prefixKey)) {
+      if (k.startsWith(prefixKey)) {
         remove(k, sessionStorage)
       }
     })
     llAllKeys.forEach(k => {
-      if(k.startsWith(prefixKey)) {
+      if (k.startsWith(prefixKey)) {
         remove(k, localStorage)
       }
     })
@@ -207,13 +197,13 @@ export const createStorage = ({
    * @memberof Cache
    */
   const removeExceptKey = (arr: string[]): void => {
-    const allKeys = getStorageAllKeys();
-    const keys = arr.map((item) => getKey(item));
-    allKeys.forEach((item) => {
+    const allKeys = getStorageAllKeys()
+    const keys = arr.map(item => getKey(item))
+    allKeys.forEach(item => {
       if (!keys.includes(item)) {
-        storage.removeItem(item);
+        storage.removeItem(item)
       }
-    });
+    })
   }
 
   /**
@@ -223,19 +213,19 @@ export const createStorage = ({
    * @memberof Cache
    */
   const cacheRemoveExceptKey = (arr: string[]): void => {
-    const ssAllKeys = getStorageAllKeys(sessionStorage);
-    const llAllKeys = getStorageAllKeys(localStorage);
-    const keys = arr.map((item) => getKey(item));
-    ssAllKeys.forEach((item) => {
+    const ssAllKeys = getStorageAllKeys(sessionStorage)
+    const llAllKeys = getStorageAllKeys(localStorage)
+    const keys = arr.map(item => getKey(item))
+    ssAllKeys.forEach(item => {
       if (!keys.includes(item)) {
-        sessionStorage.removeItem(item);
+        sessionStorage.removeItem(item)
       }
-    });
-    llAllKeys.forEach((item) => {
+    })
+    llAllKeys.forEach(item => {
       if (!keys.includes(item)) {
-        localStorage.removeItem(item);
+        localStorage.removeItem(item)
       }
-    });
+    })
   }
 
   return {
@@ -249,6 +239,6 @@ export const createStorage = ({
     cacheRemove,
     cacheClear,
     cacheRemoveExceptKey,
-    cacheClearAll
+    cacheClearAll,
   }
-};
+}

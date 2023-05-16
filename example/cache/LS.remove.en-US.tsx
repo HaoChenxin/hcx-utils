@@ -6,7 +6,6 @@ import { LS } from 'hcx-utils'
 import React from 'react'
 
 const Page: React.FC = () => {
-
   return (
     <>
       Please go to the console to view

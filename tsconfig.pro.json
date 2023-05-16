@@ -14,7 +14,7 @@
     "paths": {
       "@/*": ["src/*"],
       "hcx-utils": ["./packages/utils/src/index.ts"],
-      "hcx-utils/lib/*": ["./packages/utils/src/*"],
+      "hcx-utils/lib/*": ["./packages/utils/src/*"]
     }
   },
   // "include": ["node_modules", "lib", "es", "dist"],

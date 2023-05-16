@@ -8,7 +8,11 @@ import React from 'react'
 const Page: React.FC = () => {
   LS.set('LSDemo1', 1)
 
-  return (<>当前localStorage中LSDemo1的value: <strong>{LS.get('LSDemo1')}</strong></>)
+  return (
+    <>
+      当前localStorage中LSDemo1的value: <strong>{LS.get('LSDemo1')}</strong>
+    </>
+  )
 }
 
 export default Page

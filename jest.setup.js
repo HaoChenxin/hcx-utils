@@ -7,8 +7,8 @@ const screenfullMethods = [
   'fullscreenEnabled',
   'fullscreenchange',
   'fullscreenerror',
-];
-screenfullMethods.forEach((item) => {
-  document[item] = () => {};
-  HTMLElement.prototype[item] = () => {};
-});
+]
+screenfullMethods.forEach(item => {
+  document[item] = () => {}
+  HTMLElement.prototype[item] = () => {}
+})

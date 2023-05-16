@@ -5,9 +5,10 @@ group:
   order: 0
 ---
 
-# initialize 
+# initialize
 
 ## installation
+
 ```bash
 $ npm install --save hcx-utils
 # or
@@ -17,6 +18,7 @@ $ pnpm add hcx-utils
 ```
 
 ## use
+
 ```javascript
-import { cache } from 'hcx-utils';
+import { cache } from 'hcx-utils'
 ```
