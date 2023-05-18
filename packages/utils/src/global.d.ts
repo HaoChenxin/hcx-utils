@@ -3,3 +3,5 @@ interface Window {
 }
 declare module 'qrcode-decoder'
 declare module 'jr-qrcode'
+declare type Nullable<T> = T | null
+declare type TargetContext = '_self' | '_blank'

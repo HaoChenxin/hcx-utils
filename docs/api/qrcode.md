@@ -1,7 +1,7 @@
 ---
 nav: API
 group:
-  title: 二维码管理
+  title: 二维码工具
   order: 2
 ---
 
