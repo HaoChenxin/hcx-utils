@@ -11,7 +11,7 @@ const Page: React.FC = () => {
       <input type="file" onChange={e => setFile(e.target.files?.[0])} />
       <button
         onClick={() => {
-          if(file) {
+          if (file) {
             const reader = new FileReader()
             reader.readAsDataURL(file)
             reader.onload = async ev => {

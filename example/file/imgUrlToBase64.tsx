@@ -11,7 +11,7 @@ const Page: React.FC = () => {
       <input type="url" placeholder="请输入图片地址" onChange={e => setUrl(e.target.value)} />
       <button
         onClick={async () => {
-          if(url) {
+          if (url) {
             const res = await imgUrlToBase64(url)
             console.log(res)
           }
